@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f5f7fa;
+    color: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white;
+    padding: 30px 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+header .subtitle {
+    opacity: 0.7;
+    font-size: 1rem;
+    margin-top: 4px;
+}
+
+.mood-selector {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 25px 0 20px;
+    flex-wrap: wrap;
+}
+
+.mood-label {
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+.mood-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.mood-btn {
+    padding: 8px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    background: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    color: #1a1a2e;
+}
+
+.mood-btn:hover {
+    border-color: #0f3460;
+    background: #f0f4ff;
+}
+
+.mood-btn.active {
+    border-color: #0f3460;
+    background: #0f3460;
+    color: white;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.refresh-btn {
+    padding: 8px 24px;
+    border: none;
+    border-radius: 30px;
+    background: #0f3460;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.refresh-btn:hover {
+    background: #1a4a7a;
+    transform: scale(1.02);
+}
+
+.refresh-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#refresh-status {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.news-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: pointer;
+    min-height: 250px;
+}
+
+.news-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.news-card-inner {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.news-source {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #0f3460;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.news-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    color: #1a1a2e;
+}
+
+.news-excerpt {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.news-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid #eee;
+}
+
+.news-date {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.read-more-btn {
+    padding: 6px 16px;
+    border: none;
+    border-radius: 20px;
+    background: #0f3460;
+    color: white;
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.read-more-btn:hover {
+    background: #1a4a7a;
+}
+
+.news-card-back {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+}
+
+.news-card-back .news-content {
+    flex-grow: 1;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+.news-card-back .news-content p {
+    margin-bottom: 12px;
+}
+
+.news-card-back .source-link {
+    color: #0f3460;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.news-card-back .source-link:hover {
+    text-decoration: underline;
+}
+
+.close-btn {
+    padding: 6px 16px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.close-btn:hover {
+    background: #f0f0f0;
+}
+
+footer {
+    background: #1a1a2e;
+    color: rgba(255,255,255,0.6);
+    padding: 20px 0;
+    text-align: center;
+    margin-top: auto;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mood-selector {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .mood-buttons {
+        width: 100%;
+    }
+
+    .mood-btn {
+        flex: 1;
+        text-align: center;
+    }
+}

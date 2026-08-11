@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mood-selector">
+    <span class="mood-label">Настроение:</span>
+    <div class="mood-buttons">
+        {% for mood in moods %}
+        <button class="mood-btn {% if loop.first %}active{% endif %}" data-mood="{{ mood }}">
+            {% if mood == 'neutral' %}😐 Нейтрально
+            {% elif mood == 'positive' %}😊 Позитивно
+            {% elif mood == 'sad' %}😢 Грустно
+            {% elif mood == 'ironic' %}😏 Иронично
+            {% elif mood == 'inspiring' %}🌟 Вдохновляюще
+            {% else %}{{ mood }}{% endif %}
+        </button>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Кнопка обновления -->
+<div class="controls">
+    <button id="refresh-btn" class="refresh-btn">🔄 Обновить новости</button>
+    <span id="refresh-status"></span>
+</div>
+
+<!-- Грид новостей -->
+<div class="news-grid" id="news-grid">
+    {% for item in news %}
+    <div class="news-card" data-id="{{ item.id }}">
+        <div class="news-card-inner">
+            <!-- Лицевая сторона -->
+            <div class="news-card-front">
+                <span class="news-source">{{ item.source }}</span>
+                <h3 class="news-title">{{ item.title }}</h3>
+                <p class="news-excerpt">{{ item.content[:150] }}...</p>
+                <div class="news-meta">
+                    <span class="news-date">{{ item.published_at[:10] }}</span>
+                    <button class="read-more-btn">Читать →</button>
+                </div>
+            </div>
+            <!-- Оборотная сторона (детали) -->
+            <div class="news-card-back" style="display:none;">
+                <span class="news-source">{{ item.source }}</span>
+                <h3 class="news-title">{{ item.title }}</h3>
+                <div class="news-content">
+                    <p><strong>Оригинал:</strong> <span class="original-text">{{ item.content }}</span></p>
+                    <p><strong>Переписано:</strong> <span class="rewritten-text">⏳ Загрузка...</span></p>
+                </div>
+                <div class="news-meta">
+                    <a href="{{ item.url }}" target="_blank" class="source-link">📎 Источник</a>
+                    <button class="close-btn">✕ Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p class="no-news">Новостей пока нет. Нажмите "Обновить новости".</p>
+    {% endfor %}
+</div>
+{% endblock %}

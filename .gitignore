@@ -1,0 +1,15 @@
+
+.idea/
+.vscode/
+
+__pycache__/
+*.pyc
+
+*.db
+*.sqlite
+
+.env
+config.local.py
+
+.venv/
+venv/
